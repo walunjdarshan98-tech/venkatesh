@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Venkatesh Motors — Second-hand Commercial Vehicles & Excavator</title>
+  <meta name="description" content="Venkatesh Motors — Trusted family business selling second-hand commercial vehicles and excavators."/>
+  <style>
+    :root{
+      --accent:#2563eb;
+      --accent-2:#f59e0b;
+      --accent-3:#7c3aed;
+      --muted:#64748b;
+      --card:#ffffff;
+      --bg:#f8fafc;
+      --glass: rgba(255,255,255,0.8);
+      --glow: 0 10px 30px rgba(37,99,235,0.15), 0 6px 18px rgba(245,158,11,0.12);
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;position:relative;color:#1e293b;scroll-behavior:smooth;cursor:none;background:linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)}
+    body::before{
+      content:"";position:fixed;inset:-30%;z-index:-1;filter:blur(60px) saturate(120%);
+      background:conic-gradient(from 120deg at 50% 50%, #2563eb, #3b82f6, #f59e0b, #2563eb);
+      animation:spinBg 16s linear infinite;
+      transform:translateZ(0);
+    }
+    body::after{
+      content:"";position:fixed;inset:0;z-index:-1;
+      background:radial-gradient(1200px 800px at 20% -10%, rgba(37,99,235,0.08), transparent 60%),
+                 radial-gradient(800px 600px at 120% 120%, rgba(245,158,11,0.06), transparent 60%),
+                 linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+      transform:translateZ(0);
+    }
+    @keyframes spinBg{to{transform:rotate(360deg)}}
+    header{background:rgba(210, 205, 52, 0.393);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(37,99,235,0.1);color:#1e293b;padding:18px;position:sticky;top:0;z-index:50;box-shadow:0 4px 20px rgba(37,99,235,0.1)}
+    .container{max-width:1100px;margin:0 auto;padding:0 18px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand h1{margin:0;font-size:20px;letter-spacing:0.6px}
+    nav{margin-left:auto}
+    nav a{position:relative;color:#475569;text-decoration:none;margin-left:18px;font-weight:700;letter-spacing:0.3px}
+    nav a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:linear-gradient(90deg,var(--accent-2), var(--accent));transform:scaleX(0);transform-origin:right;transition:transform .25s ease}
+    nav a:hover::after{transform:scaleX(1);transform-origin:left}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:44px 22px;perspective:1000px;position:relative;border:1px solid rgba(255,255,255,0.08);border-radius:18px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));box-shadow:0 20px 60px rgba(8,15,35,0.45)}
+    .hero::before{content:"";position:absolute;inset:-30%;background:radial-gradient(600px 400px at 20% 30%, rgba(37,99,235,0.2), transparent 60%), radial-gradient(600px 400px at 90% 70%, rgba(245,158,11,0.18), transparent 60%);filter:blur(6px);animation:heroPulse 8s ease-in-out infinite alternate}
+    .hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);background-size:18px 18px;opacity:.4;pointer-events:none}
+    @keyframes heroPulse{to{transform:translateY(-8px) scale(1.02)}}
+    .hero .decor{position:absolute;right:6%;top:12%;width:140px;height:140px;border-radius:50%;background:conic-gradient(from 90deg, rgba(37,99,235,0.4), rgba(59,130,246,0.35), rgba(245,158,11,0.3));filter:blur(6px);opacity:.6;animation:spin 12s linear infinite;transform:translateZ(0)}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(37,99,235,0.12);color:#1e40af;border:1px solid rgba(37,99,235,0.35);font-weight:800;margin-bottom:10px}
+    .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(180deg,#2563eb,#7c3aed);box-shadow:0 0 10px rgba(37,99,235,0.7)}
+    .rotator{display:inline-grid;vertical-align:baseline;overflow:hidden;height:1.1em}
+    .rotator > span{grid-area:1/1;animation:rotateWords 8s steps(4) infinite}
+    .rotator > span span{display:block}
+    @keyframes rotateWords{0%,20%{transform:translateY(0)}25%,45%{transform:translateY(-1.1em)}50%,70%{transform:translateY(-2.2em)}75%,95%{transform:translateY(-3.3em)}100%{transform:translateY(-4.4em)}}
+    .accent{background:linear-gradient(90deg,#2563eb, #7c3aed);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .trust-row{display:flex;align-items:center;gap:14px;margin-top:14px;color:#64748b}
+    .trust-row .tick{color:#22c55e}
+    .hero-left h2{font-size:36px;margin:0 0 12px;line-height:1.15;text-shadow:0 2px 22px rgba(37,99,235,0.2)}
+    .hero-left p{color:#64748b;margin:0 0 18px}
+    .cta{display:inline-block;background:linear-gradient(90deg,var(--accent-2), #ffd166);color:#111;padding:12px 18px;border-radius:10px;font-weight:800;text-decoration:none;transition:transform 200ms ease, box-shadow 200ms ease, filter .2s ease;box-shadow:var(--glow)}
+    .cta:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 12px 30px rgba(242,169,0,0.35)}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));border:1px solid rgba(37,99,235,0.1);border-radius:14px;padding:18px;box-shadow:0 8px 24px rgba(37,99,235,0.15)}
+    .stats{display:flex;gap:12px;margin-top:12px}
+    .stat{flex:1;padding:8px;border-radius:8px;background:linear-gradient(180deg,#fff, var(--glass));text-align:center}
+
+    .section{padding:36px 0}
+    .section h3{margin:0 0 18px;position:relative;font-size:22px}
+    .section h3::after{content:"";position:absolute;left:0;bottom:-6px;width:64px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--accent-3), var(--accent-2))}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;perspective:1000px}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid rgba(37,99,235,0.1);
+      box-shadow:0 10px 30px rgba(37,99,235,0.15);
+      position:relative;
+      z-index:0;
+      will-change: transform, box-shadow;
+      transition:transform 220ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms cubic-bezier(.2,.9,.3,1), border-color .2s ease;
+      transform-origin:center;
+    }
+    .card:hover,
+    .card:focus-within{
+      transform:translateY(-10px) scale(1.02) rotateX(1deg);
+      box-shadow:0 22px 60px rgba(37,99,235,0.25), 0 14px 30px rgba(245,158,11,0.2);
+      border-color:rgba(37,99,235,0.2);
+      z-index:5;
+    }
+    .card img{width:100%;height:160px;object-fit:cover;display:block;transition:transform 420ms cubic-bezier(.2,.9,.3,1);backface-visibility:hidden;filter:saturate(110%)}
+    .card:hover img,
+    .card:focus-within img{transform:scale(1.06) translateY(-4px)}
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      border-radius:inherit;
+      transition:box-shadow 220ms cubic-bezier(.2,.9,.3,1);
+      box-shadow:inset 0 0 0 0 rgba(0,0,0,0);
+    }
+    .card:hover::after,
+    .card:focus-within::after{box-shadow:inset 0 -6px 30px rgba(15,76,129,0.03)}
+    .card .body{padding:12px;position:relative;z-index:1}
+    .ribbon{position:absolute;top:10px;left:-6px;background:linear-gradient(90deg,var(--accent-3), var(--accent));color:#fff;font-weight:900;font-size:11px;padding:6px 10px;border-top-right-radius:8px;border-bottom-right-radius:8px;box-shadow:0 6px 14px rgba(124,58,237,0.35)}
+    .ribbon::after{content:"";position:absolute;left:0;bottom:-6px;border-top:6px solid #2b154f;border-left:6px solid transparent;filter:brightness(0.7)}
+    .meta{font-size:13px;color:#64748b;margin-bottom:8px}
+    .price{font-weight:900;color:#1e293b}
+    .btn{display:inline-block;padding:8px 12px;border-radius:10px;text-decoration:none;background:linear-gradient(90deg,#2563eb, var(--accent));color:#fff;font-weight:800;box-shadow:var(--glow)}
+
+    /* 3D tilt base */
+    .tilt{transform-style:preserve-3d}
+    .tilt .shine{
+      content:"";
+      position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+      background:radial-gradient(500px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.25), transparent 40%);
+      opacity:0;transition:opacity .2s ease;
+      mix-blend-mode:screen;
+    }
+    .tilt.is-tilting .shine{opacity:1}
+    .card.tilt-enabled:hover, .card.tilt-enabled:focus-within{transform:none;box-shadow:0 18px 40px rgba(10,10,10,0.12)}
+
+    .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+    .filters select, .filters input{padding:8px;border-radius:8px;border:1px solid #e3e6ea}
+
+    .gallery{display:flex;gap:8px;flex-wrap:wrap}
+    .gallery img{width:calc(33.333% - 8px);height:130px;object-fit:cover;border-radius:8px}
+
+    .test{background:linear-gradient(180deg,rgba(255,255,255,0.8), rgba(255,255,255,0.6));padding:14px;border-radius:12px;border:1px solid rgba(37,99,235,0.1);box-shadow:0 10px 26px rgba(37,99,235,0.15)}
+
+    footer{padding:18px 0;color:#64748b}
+
+    .modal-back{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:none;place-items:center;opacity:0;transition:opacity 250ms ease}
+    .modal-back.open{opacity:1}
+    .modal{width:95%;max-width:780px;background:#fff;border-radius:12px;padding:16px;transform:translateY(8px) scale(.98);opacity:0;transition:transform 250ms ease, opacity 250ms ease}
+    .modal-back.open .modal{transform:none;opacity:1}
+
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .gallery img{width:calc(50% - 8px)}
+    }
+
+    .fade-up{opacity:0;transform:translateY(10px);animation:fadeUp .5s ease forwards}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
+
+    /* Scroll reveal utility */
+    .reveal{opacity:0;transform:translateY(12px);transition:opacity 600ms ease, transform 600ms ease}
+    .reveal.in{opacity:1;transform:none}
+
+    .whatsapp{position:fixed;right:18px;bottom:18px;background:#25D366;color:#fff;border-radius:999px;padding:12px 16px;box-shadow:0 10px 30px rgba(37,211,102,0.15);z-index:60;text-decoration:none;font-weight:800;animation:floatY 3s ease-in-out infinite}
+    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+
+
+
+    /* Crazy custom cursor */
+    .crazy-cursor{position:fixed;top:0;left:0;width:34px;height:34px;border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:plus-lighter;filter:saturate(140%);transform:translate3d(-999px,-999px,0)}
+    .crazy-cursor .core{position:absolute;inset:0;border-radius:inherit;background:radial-gradient(35% 35% at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.3) 40%, rgba(15,76,129,0.8) 80%);box-shadow:0 0 20px rgba(15,76,129,0.55), 0 0 40px rgba(242,169,0,0.35) inset;animation:pulse 1.2s ease-in-out infinite}
+    .crazy-cursor .ring{position:absolute;inset:-8px;border-radius:inherit;border:2px solid rgba(242,169,0,0.7);box-shadow:0 0 14px rgba(242,169,0,0.6);animation:spin 1.8s linear infinite}
+    .crazy-cursor .dot{position:absolute;width:8px;height:8px;border-radius:50%;background:linear-gradient(180deg,#fff,#f2a900);box-shadow:0 0 10px rgba(242,169,0,0.8)}
+    .crazy-cursor .d1{top:-4px;left:50%;margin-left:-4px;animation:orbit 1.6s linear infinite}
+    .crazy-cursor .d2{bottom:-4px;left:50%;margin-left:-4px;animation:orbit 1.1s linear reverse infinite}
+    .crazy-cursor .d3{left:-4px;top:50%;margin-top:-4px;animation:orbit 2s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes pulse{0%,100%{transform:scale(0.96)}50%{transform:scale(1.04)}}
+    @keyframes orbit{to{transform:rotate(360deg) translateX(18px) rotate(-360deg)}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container" style="display:flex;align-items:center">
+      <div class="brand">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44'><rect rx='8' width='44' height='44' fill='%230f4c81'/><text x='50%' y='55%' font-size='20' font-family='Arial' fill='white' text-anchor='middle' dominant-baseline='middle'>VM</text></svg>" alt="logo" style="width:44px;height:44px;border-radius:8px;object-fit:cover">
+        <div>
+          <h1>Venkatesh Motors</h1>
+          <div style="font-size:13px;color:rgba(164, 84, 84, 0.9);margin-top:4px">Trusted second-hand commercial vehicles & escalators</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#products">Products</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="decor" aria-hidden="true"></span>
+      <div class="hero-left">
+        <div class="hero-badge fade-up"><span class="dot"></span> Since 2015 • Family-owned</div>
+        <h2 class="fade-up">Reliable second-hand <span class="accent rotator"><span><span>trucks</span><span>tippers</span><span>buses</span><span>excavators</span></span></span> commercial vehicles and refurbished excavators</h2>
+        <p class="fade-up" style="animation-delay:.08s">Family-run business — inspected, tested and priced fairly. Buy with confidence or sell/exchange your equipment.</p>
+        <div style="display:flex;gap:10px;margin-top:18px">
+          <a class="cta" href="#products">Browse Stock</a>
+          <a class="btn" href="#contact">Request Quote</a>
+        </div>
+        <div class="trust-row fade-up" style="animation-delay:.12s">
+          <span class="tick">✔</span> 1200+ vehicles sold
+          <span class="tick">✔</span> 20+ excavators refurbished
+          <span class="tick">✔</span> Fair pricing
+        </div>
+
+        <div class="hero-card" style="margin-top:22px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-size:12px;color:var(--muted)">Years of service</div>
+              <div style="font-weight:900;font-size:22px"><span class="counter" data-target="10">0</span>+</div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:var(--muted)">Vehicles sold</div>
+              <div style="font-weight:900;font-size:22px"><span class="counter" data-target="1200">0</span>+</div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:var(--muted)">Excavators refurbished</div>
+              <div style="font-weight:900;font-size:22px"><span class="counter" data-target="20">0</span>+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div style="font-weight:800;margin-bottom:8px">Quick Search</div>
+        <div class="filters">
+          <select id="typeFilter"><option value="all">All Types</option><option value="truck">Truck</option><option value="tipper">Tipper</option><option value="trailer">Trailer</option><option value="bus">Bus</option><option value="escalator">Escalator</option></select>
+          <input id="minPrice" placeholder="Min price (₹)" />
+          <input id="maxPrice" placeholder="Max price (₹)" />
+          <button class="btn" onclick="applyFilters()">Apply</button>
+        </div>
+
+        <div style="margin-top:12px">
+          <div style="font-size:12px;color:var(--muted)">Featured</div>
+          <div style="margin-top:8px">
+            <img src="venkatesh.png.jpg" alt="featured" style="width:100%;height:140px;object-fit:cover;border-radius:8px">
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="products" class="section">
+      <h3>Available Stock</h3>
+      <div id="productsGrid" class="grid"></div>
+    </section>
+
+    <section id="gallery" class="section">
+      <h3>Gallery</h3>
+      <div class="gallery">
+        <img src="venki.png.jpg" alt="g1">
+        <img src="vyank.png.jpg" alt="g2">
+        <img src="JCB.png.jpg" alt="g3">
+      </div>
+    </section>
+
+    <section id="testimonials" class="section">
+      <h3>What customers say</h3>
+      <div class="grid">
+        <div class="test">"Good prices and honest service. Bought a tipper in great condition." — Ramesh K.</div>
+        <div class="test">"Excavator refurbishment was fast and the technicians were professional." — Sunita P.</div>
+        <div class="test">"Excellent after-sales support and easy financing options." — Ajay S.</div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h3>Contact Us</h3>
+      <div style="display:grid;grid-template-columns:1fr 360px;gap:18px">
+        <form id="contactForm" onsubmit="event.preventDefault();submitForm()">
+          <div style="display:flex;gap:8px;margin-bottom:8px">
+            <input required placeholder="Your name" id="cname" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e3e6ea">
+            <input required placeholder="Phone or WhatsApp" id="cphone" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e3e6ea">
+          </div>
+          <input placeholder="Email" id="cemail" style="width:100%;padding:10px;border-radius:8px;border:1px solid #e3e6ea;margin-bottom:8px">
+          <textarea placeholder="Message (tell us what you need)" id="cmessage" style="width:100%;padding:10px;border-radius:8px;border:1px solid #e3e6ea;min-height:120px"></textarea>
+          <div style="margin-top:8px">
+            <button class="btn">Send Inquiry</button>
+          </div>
+        </form>
+
+        <aside style="background:var(--card);padding:16px;border-radius:10px;box-shadow:0 6px 18px rgba(10,10,10,0.06)">
+          <div style="font-weight:800">Venkatesh Motors</div>
+          <div style="font-size:14px;color:var(--muted);margin-top:6px">Venkatesh motors alephata pune</div>
+          <div style="margin-top:10px">
+            <div style="font-weight:700">Call / WhatsApp</div>
+            <div style="margin-top:6px">+91 9890145690</div>
+          </div>
+          <div style="margin-top:12px">
+            <div style="font-weight:700">Email</div>
+            <div style="margin-top:6px">rutulmotors@gmail.com</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer class="section">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>© <strong>Venkatesh Motors</strong> — All rights reserved.</div>
+        <div style="color:var(--muted);font-size:13px">Made with care by your family business</div>
+      </div>
+    </footer>
+  </main>
+
+  <a class="whatsapp" href="https://wa.me/=918975239014" target="_blank">WhatsApp</a>
+
+  <!-- Crazy animated cursor -->
+  <div class="crazy-cursor" id="crazyCursor">
+    <span class="core"></span>
+    <span class="ring"></span>
+    <span class="dot d1"></span>
+    <span class="dot d2"></span>
+    <span class="dot d3"></span>
+  </div>
+
+  <!-- AI Assistant UI -->
+  <button id="aiLauncher" aria-label="Open assistant" style="position:fixed;right:18px;bottom:78px;z-index:70;border:0;border-radius:999px;padding:12px 14px;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;box-shadow:0 14px 30px rgba(124,58,237,.35);display:flex;align-items:center;gap:8px;font-weight:900;cursor:pointer">
+    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e"></span>
+    Venkatesh AI
+  </button>
+  <div id="aiPanel" style="position:fixed;left:18px;bottom:138px;width:320px;max-height:60vh;display:none;grid-template-rows:auto 1fr auto;background:rgba(43, 64, 101, 0.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;box-shadow:0 24px rgba(53, 70, 116, 0.6)5,.6);z-index:70">
+    <div style="padding:10px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08)">
+      <div style="font-weight:900">Assistant</div>
+      <button id="aiClose" style="background:transparent;border:0;color:#fff;font-weight:900;cursor:pointer">✕</button>
+    </div>
+    <div id="aiMessages" style="padding:12px;overflow:auto;display:flex;flex-direction:column;gap:8px"></div>
+    <form id="aiForm" style="display:flex;gap:8px;padding:10px;border-top:1px solid rgba(144, 61, 61, 0.08)" onsubmit="event.preventDefault();sendAiMessage()">
+      <input id="aiInput" placeholder="Ask about stock, prices..." style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(151, 49, 49, 0.15);background:rgba(255,255,255,.08);color:#c6b8b8" />
+      <button class="btn" type="submit">Send</button>
+    </form>
+  </div>
+
+  <div id="modalBack" class="modal-back"><div class="modal" id="modal"><button onclick="closeModal()" style="float:right;background:transparent;border:0;font-weight:800;font-size:18px">✕</button><div id="modalContent"></div></div></div>
+
+  <script>
+    let inventory = [];
+
+    // Load inventory dynamically (replace URL with your API)
+    async function loadInventory(){
+      try {
+        // Example: fetch('/api/inventory')
+        // For demo, fallback to sample array
+        inventory = [
+          {id:1,type:'truck',title:'Tata 2518',price:3000000,image:'img.png.jpg',meta:'KM • 18,000 km'},
+          {id:2,type:'tipper',title:'Tata(2022)',price:3000000,image:'hywa.png.jpg',meta:'KM • 30,000 km'},
+          {id:3,type:'trailer',title:'JCB(2023)',price:5000000,image:'venki.png.jpg',meta:'Good condition'},
+          {id:4,type:'jcb',title:'JCB(2010)',price:850000,image:'JCB.png.jpg',meta:'GOOD CONDITION'},
+          {id:5,type:'escalator',title:'Escalator Unit - Refurbished',price:2200000,image:'JCB.png.jpg',meta:'Serviced & Warranty'}
+        ];
+        render(inventory);
+      } catch(err) {
+        console.error('Failed to load inventory', err);
+      }
+    }
+
+    const grid = document.getElementById('productsGrid');
+    function render(items){
+      grid.innerHTML = '';
+      items.forEach((p,i)=>{
+        const el = document.createElement('div'); el.className='card reveal tilt tilt-enabled';
+        el.innerHTML = `
+          <img src="${p.image}" alt="${escapeHtml(p.title)}">
+          <div class="body">
+            <div class="meta">${p.type.toUpperCase()}</div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-weight:800">${escapeHtml(p.title)}</div>
+                <div class="meta">${escapeHtml(p.meta)}</div>
+              </div>
+              <div style="text-align:right">
+                <div class="price">₹ ${numberWithCommas(p.price)}</div>
+                <div style="margin-top:8px"><a class="btn" onclick="openModal(${p.id})">View</a></div>
+              </div>
+            </div>
+          </div>
+          <span class="shine"></span>`;
+        el.style.transitionDelay = (i * 60) + 'ms';
+        grid.appendChild(el);
+        if (window.revealObserver) window.revealObserver.observe(el);
+        if (window.enableTilt) window.enableTilt(el);
+      })
+    }
+
+    function applyFilters(){
+      const type = document.getElementById('typeFilter').value;
+      const min = parseInt(document.getElementById('minPrice').value || 0,10);
+      const max = parseInt(document.getElementById('maxPrice').value || 9999999999,10);
+      const filtered = inventory.filter(i=> (type==='all' || i.type===type) && i.price>=min && i.price<=max);
+      render(filtered);
+    }
+
+    function openModal(id){
+      const item = inventory.find(x=>x.id===id);
+      if(!item) return;
+      document.getElementById('modalContent').innerHTML = `
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <img src="${item.image}" style="width:45%;height:220px;object-fit:cover;border-radius:8px">
+          <div style="flex:1">
+            <h2 style="margin:0 0 8px">${escapeHtml(item.title)}</h2>
+            <div style="color:var(--muted);margin-bottom:8px">${escapeHtml(item.meta)}</div>
+            <div style="font-weight:900;font-size:20px;margin-bottom:12px">₹ ${numberWithCommas(item.price)}</div>
+            <div style="display:flex;gap:8px">
+              <a class="btn" href="tel:+918975239014">Call</a>
+              <a class="btn" href="https://wa.me/918975239014?text=I'm%20interested%20in%20${encodeURIComponent(item.title)}" target="_blank">WhatsApp</a>
+            </div>
+          </div>
+        </div>`;
+      const back = document.getElementById('modalBack');
+      back.style.display='grid';
+      requestAnimationFrame(()=> back.classList.add('open'));
+    }
+    function closeModal(){
+      const back = document.getElementById('modalBack');
+      back.classList.remove('open');
+      setTimeout(()=>{ back.style.display='none' }, 250);
+    }
+
+    async function submitForm(){
+      const data = {
+        name: document.getElementById('cname').value,
+        phone: document.getElementById('cphone').value,
+        email: document.getElementById('cemail').value,
+        message: document.getElementById('cmessage').value
+      };
+      try{
+        // POST to your backend
+        // await fetch('/api/inquiry', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)});
+        alert('Thanks '+data.name+'! We received your inquiry. We will call/WhatsApp you shortly.');
+        document.getElementById('contactForm').reset();
+      } catch(err){
+        alert('Failed to send inquiry. Please try again later.');
+      }
+    }
+
+    function numberWithCommas(x){return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")}
+    function escapeHtml(s){return (s+'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c]})}
+
+    document.querySelectorAll('.fade-up').forEach((el,i)=>{el.style.animationDelay = (i*0.06)+'s'})
+    
+    // Scroll reveal setup
+    function setupRevealObserver(){
+      if ('IntersectionObserver' in window === false) {
+        document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+        return;
+      }
+      window.revealObserver = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('in');
+            window.revealObserver.unobserve(entry.target);
+          }
+        })
+      }, {threshold:0.1});
+      document.querySelectorAll('.section, .test, .gallery img, .hero-card, header .brand').forEach(el=>{
+        el.classList.add('reveal');
+        window.revealObserver.observe(el);
+      });
+    }
+    document.getElementById('modalBack').addEventListener('click', (e)=>{ if(e.target.id==='modalBack') closeModal() })
+
+    setupRevealObserver();
+    animateCounters();
+
+    // Animated counters
+    function animateCounters(){
+      const counters = document.querySelectorAll('.counter');
+      const speed = 50; // Lower = faster animation
+      
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const increment = target / 100; // Divide by frames (100 frames)
+        let current = 0;
+        
+        const updateCounter = () => {
+          if (current < target) {
+            current += increment;
+            counter.textContent = Math.ceil(current);
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target;
+          }
+        };
+        
+        // Start animation when element is visible
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              updateCounter();
+              observer.unobserve(entry.target);
+            }
+          });
+        });
+        observer.observe(counter);
+      });
+    }
+
+    // 3D tilt interactions
+    (function(){
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
+
+      function computeTilt(el, evt){
+        const rect = el.getBoundingClientRect();
+        const mx = (evt.clientX - rect.left) / rect.width;
+        const my = (evt.clientY - rect.top) / rect.height;
+        const clamp = (v,min,max)=>Math.max(min, Math.min(max, v));
+        const nx = clamp(mx * 2 - 1, -1, 1);
+        const ny = clamp(my * 2 - 1, -1, 1);
+        const maxDeg = 10;
+        const rotateY = -(nx * maxDeg);
+        const rotateX = ny * maxDeg;
+        el.style.setProperty('--mx', (mx*100)+'%');
+        el.style.setProperty('--my', (my*100)+'%');
+        el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(12px)`;
+        el.style.boxShadow = `0 18px 40px rgba(10,10,10,0.12)`;
+      }
+
+      window.enableTilt = function(target){
+        const el = (typeof target === 'string') ? document.querySelector(target) : target;
+        if (!el || el.__tiltBound) return;
+        el.__tiltBound = true;
+        if (!el.querySelector('.shine')){
+          const s = document.createElement('span'); s.className='shine'; el.appendChild(s);
+        }
+        el.classList.add('tilt');
+        let rafId = null;
+        let lastEvent = null;
+        const onMove = (e)=>{
+          lastEvent = e;
+          if (rafId) return;
+          el.classList.add('is-tilting');
+          rafId = requestAnimationFrame(()=>{
+            rafId = null;
+            computeTilt(el, lastEvent);
+          });
+        };
+        const onLeave = ()=>{
+          el.classList.remove('is-tilting');
+          el.style.transform = '';
+          el.style.boxShadow = '';
+        };
+        el.addEventListener('mousemove', onMove);
+        el.addEventListener('mouseleave', onLeave);
+        el.addEventListener('mouseenter', ()=> el.classList.add('is-tilting'));
+      };
+
+      // Enable on existing non-dynamic elements
+      document.querySelectorAll('.hero-card, .test').forEach(el=> window.enableTilt(el));
+    })();
+    loadInventory();
+
+    // Crazy cursor logic
+    ;(function(){
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
+      const cursor = document.getElementById('crazyCursor');
+      if (!cursor) return;
+      let targetX = -999, targetY = -999;
+      let currentX = targetX, currentY = targetY;
+      let speedX = 0, speedY = 0;
+      let t = 0;
+      const lerp = (a,b,n)=>a+(b-a)*n;
+      const onMove = (e)=>{
+        targetX = e.clientX - cursor.offsetWidth/2;
+        targetY = e.clientY - cursor.offsetHeight/2;
+      };
+      const onLeave = ()=>{ targetX = -999; targetY = -999 };
+      window.addEventListener('mousemove', onMove);
+      window.addEventListener('mouseleave', onLeave);
+      function loop(){
+        t += 0.016;
+        const follow = 0.22; // higher = snappier
+        const prevX = currentX, prevY = currentY;
+        currentX = lerp(currentX, targetX, follow);
+        currentY = lerp(currentY, targetY, follow);
+        speedX = currentX - prevX;
+        speedY = currentY - prevY;
+        const speed = Math.hypot(speedX, speedY);
+        // add a little chaos based on time and speed
+        const jitterAmp = Math.min(14, 2 + speed * 0.9);
+        const jx = Math.sin(t * 23.7) * jitterAmp + (Math.random()-0.5) * 2;
+        const jy = Math.cos(t * 19.3) * jitterAmp + (Math.random()-0.5) * 2;
+        const angle = Math.atan2(speedY, speedX) * 180/Math.PI;
+        const scale = 1 + Math.min(0.35, speed * 0.04);
+        cursor.style.transform = `translate3d(${currentX + jx}px, ${currentY + jy}px, 0) rotate(${angle}deg) scale(${scale})`;
+        requestAnimationFrame(loop);
+      }
+      loop();
+      // Show native caret in inputs/textareas for usability
+      document.querySelectorAll('input, textarea').forEach(el=>{
+        el.addEventListener('mouseenter', ()=>{ document.body.style.cursor='text'; cursor.style.display='none'; });
+        el.addEventListener('mouseleave', ()=>{ document.body.style.cursor='none'; cursor.style.display=''; });
+      });
+    })();
+
+    // AI Assistant logic
+    const aiLauncher = document.getElementById('aiLauncher');
+    const aiPanel = document.getElementById('aiPanel');
+    const aiClose = document.getElementById('aiClose');
+    const aiMessages = document.getElementById('aiMessages');
+    const aiInput = document.getElementById('aiInput');
+    function toggleAIPanel(show){ aiPanel.style.display = show ? 'grid' : 'none'; if(show) aiInput.focus(); }
+    aiLauncher.addEventListener('click', ()=> toggleAIPanel(true));
+    aiClose.addEventListener('click', ()=> toggleAIPanel(false));
+    function addMsg(role, text){
+      const bubble = document.createElement('div');
+      bubble.style.maxWidth = '85%';
+      bubble.style.padding = '8px 10px';
+      bubble.style.borderRadius = '10px';
+      bubble.style.whiteSpace = 'pre-wrap';
+      if(role==='user'){
+        bubble.style.alignSelf = 'flex-end';
+        bubble.style.background = 'linear-gradient(90deg,#7c3aed,#a855f7)';
+        bubble.textContent = text;
+      } else {
+        bubble.style.alignSelf = 'flex-start';
+        bubble.style.background = 'rgba(255,255,255,.08)';
+        bubble.textContent = text;
+      }
+      aiMessages.appendChild(bubble);
+      aiMessages.scrollTop = aiMessages.scrollHeight;
+    }
+    function sendAiMessage(){
+      const q = aiInput.value.trim();
+      if(!q) return;
+      addMsg('user', q);
+      aiInput.value='';
+      respond(q);
+    }
+    function matchFaq(q){
+      q = q.toLowerCase();
+      if(q.includes('price') || q.includes('cost')) return 'You can filter by min/max price in Quick Search. For exact quotes, tell me the vehicle and I’ll prepare a price.';
+      if(q.includes('contact') || q.includes('call') || q.includes('whatsapp')) return 'Call/WhatsApp: +91 9890145690. Email: rutulmotors@gmail.com';
+      if(q.includes('location') || q.includes('where')) return 'We are in Alephata, Pune.';
+      if(q.includes('finance') || q.includes('loan')) return 'We provide easy financing options with partner banks. Share your budget and vehicle type.';
+      if(q.includes('hours') || q.includes('open')) return 'We’re available 9am–7pm IST, Mon–Sat. WhatsApp anytime!';
+      return '';
+    }
+    function searchInventory(q){
+      const term = q.toLowerCase();
+      const results = (inventory||[]).filter(i=>
+        i.title.toLowerCase().includes(term) ||
+        i.type.toLowerCase().includes(term)
+      ).slice(0,3);
+      if(results.length===0) return '';
+      return 'Matching stock:\n' + results.map(r=>`• ${r.title} — ₹ ${numberWithCommas(r.price)}`).join('\n');
+    }
+    async function respond(q){
+      try{
+        // Try backend AI first (relative URL to support any port)
+        const res = await fetch('/api/ai', {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ query:q, inventory })
+        });
+        if(res.ok){
+          const data = await res.json();
+          if(data?.answer){ addMsg('ai', data.answer); return; }
+        }
+        throw new Error('Backend AI unavailable');
+      } catch(err){
+        // Fallback to local rules
+        const faq = matchFaq(q);
+        const inv = searchInventory(q);
+        let reply = '';
+        if(inv) reply += inv + '\n\n';
+        if(faq) reply += faq;
+        if(!reply){
+          reply = "I can help with inventory, prices, contact info, and availability. Try: 'tipper under 35 lakhs' or 'contact'.";
+        }
+        addMsg('ai', reply);
+      }
+    }
+
+    // Optional backend hook example
+    // async function remoteAI(query){
+    //   const res = await fetch('/api/ai', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({query})});
+    //   if(!res.ok) throw new Error('AI failed');
+    //   const data = await res.json();
+    //   return data.answer;
+    // }
+  </script>
+</body>
+</html>
+
